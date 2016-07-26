@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<style>
+.c{
+	margin-top: 10px;
+	width: 32%;
+}
+.one{
+	width: 33%;
+	height: 30px;
+	float: left;
+}
+.value{
+	font-size: 30px;
+	text-align: center;
+}
+</style>
+</head>
+
+<body>
+<input type="range" id="Range" value="128" oninput="colorFunction()" min="0" max="255" class="c">
+<input type="range" id="Range2" value="128" oninput="colorFunction()" min="0" max="255" class="c">
+<input type="range" id="Range3" value="128" oninput="colorFunction()" min="0" max="255" class="c">
+</br>
+
+<div class="one" style="background:rgb(255,0,0)"></div>
+<div class="one" style="background:rgb(0,255,0)"></div>
+<div class="one" style="background:rgb(0,0,255)"></div>
+</br>
+<p id="colorValue" class="value">RGB(128,128,128)</p>
+
+<p id="mixColor" style="font-size:50px;background-color:rgb(128,128,128);height:50px;width:50%"></p>
+<div id="color"></div>
+	
+<script>
+function colorFunction() {
+    var x = document.getElementById("Range").value;
+    var y = document.getElementById("Range2").value;
+    var z = document.getElementById("Range3").value;
+    var X = parseFloat(x);
+    var Y = parseFloat(y);
+    var Z = parseFloat(z);
+    var v = [x,y,z];  
+    document.getElementById("mixColor").style.backgroundColor = "rgb("+ v +")";
+    document.getElementById("mixColor").style.width = (X + Y + Z) * 100 / 765 + "%";
+    document.getElementById("colorValue").innerHTML = "RGB(" + v + ")";
+}
+</script>
+</body>
+</html>
